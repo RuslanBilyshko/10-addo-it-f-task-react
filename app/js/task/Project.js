@@ -11,7 +11,7 @@ class Project extends React.Component {
     }
 
     render() {
-        let pId = "project-" + this.props.data.id;
+        let pId = "task_project-" + this.props.data.id;
         let pColor = this.props.data.color;
 
         return (

@@ -12,9 +12,14 @@ class TaskList extends React.Component {
     }
 
     render() {
+
+        let tList = this.props.data.map((item)=>{
+            return <TaskItem data={item}/>
+        });
+
         return (
             <div className="task-list-container">
-                <TaskItem data={this.state.data[0]}/>
+                {tList}
             </div>
         );
     }

@@ -13,15 +13,17 @@ class TaskItem extends React.Component {
         }
     }
 
-
     render() {
 
+        let tId = "task-" + this.state.data.id;
+
         return (
-            <div id="task-" className="task_item">
-                <Priority priority={this.state.data.priority} />
-                <div className="task_item_title">{this.state.data.title}</div>
-                <Project data={this.state.data.project} />
+            <div id={tId} className="task col-md-12">
+                <Priority priority={this.state.data.priority}/>
+                <div className="task_title">{this.state.data.title}</div>
                 <SettingsMenu/>
+                <Project data={this.state.data.project}/>
+
                 {/*{console.log("Data - ", this.state.data)}*/}
             </div>
         );
