@@ -1,6 +1,68 @@
 body {
-    font-size: 14px;
-    background-color: #eee;
+  font-size: 14px;
+  background-color: #eee;
+}
+
+.header-container {
+  background-color: #5a75c9;
+  color: #fff;
+
+  header {
+
+    padding: 15px 25px;
+
+    h1 {
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+.main-content {
+  background-color: #fff;
+  padding: 25px;
+}
+
+.task-list-container {
+
+  .task {
+
+    border-bottom: #c5c5c5 solid 1px;
+    padding: 5px;
+
+    & > div {
+      float: left;
+    }
+
+    .task_priority {
+
+    }
+
+    .task_title {
+
+    }
+
+    .task_project {
+      float: right;
+    }
+
+    .task_settings {
+
+      float: right;
+
+    }
+
+
+  }
+
+}
+
+.project-container {
+  float: right;
+  margin-top: 15px;
 }
 
 

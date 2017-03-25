@@ -11,8 +11,8 @@ class Priority extends React.Component {
     }
 
     render() {
-        let priority = "priority-" + this.state.priority;
-        return (<span className={priority} />);
+        let priority = "task__priority priority-" + this.state.priority;
+        return (<div className={priority} />);
     }
 
 }

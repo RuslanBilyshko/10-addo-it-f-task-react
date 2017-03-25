@@ -1,6 +1,5 @@
 import React from 'react';
 import TaskList from './TaskList';
-import task_data from './task_data';
 import TaskApi from './TaskApi';
 
 class TaskListContainer extends React.Component {
@@ -14,8 +13,11 @@ class TaskListContainer extends React.Component {
     }
 
 
-    render(){
-        return(<TaskList data={this.state.data}/>);
+    render() {
+
+        return (
+            <TaskList data={this.state.data}/>
+        );
     }
 
 }
