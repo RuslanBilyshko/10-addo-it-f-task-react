@@ -1,4 +1,5 @@
 import React from 'react';
+import FontAwesome from 'react-fontawesome';
 
 class Priority extends React.Component {
 
@@ -11,8 +12,8 @@ class Priority extends React.Component {
     }
 
     render() {
-        let priority = "task__priority priority-" + this.state.priority;
-        return (<div className={priority} />);
+        let priority = "clearfix task_priority priority-" + this.state.priority;
+        return (<div className={priority} >&nbsp;{<FontAwesome name='square' />}</div>);
     }
 
 }

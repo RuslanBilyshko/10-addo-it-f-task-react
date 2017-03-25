@@ -1,3 +1,20 @@
+$prority0: yellow;
+$prority1: Orange;
+$prority2: red;
+
+//.prority0 {
+//  color: $prority0;
+//  background-color: $prority0;
+//}
+//.prority1 {
+//  color: $prority1;
+//  background-color: $prority1;
+//}
+//.prority2 {
+//  color: $prority2;
+//  background-color: $prority2;
+//}
+
 body {
   font-size: 14px;
   background-color: #eee;
@@ -26,6 +43,24 @@ body {
   padding: 25px;
 }
 
+.priority-0 span.fa {
+  color: $prority0;
+  background-color: $prority0;
+
+}
+
+.priority-1 span.fa {
+  color: $prority1;
+  background-color: $prority1;
+
+}
+
+.priority-2 span.fa {
+  color: $prority2;
+  background-color: $prority2;
+
+}
+
 .task-list-container {
 
   .task {
@@ -39,6 +74,11 @@ body {
 
     .task_priority {
 
+      span.fa {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+      }
     }
 
     .task_title {
@@ -54,7 +94,6 @@ body {
       float: right;
 
     }
-
 
   }
 
