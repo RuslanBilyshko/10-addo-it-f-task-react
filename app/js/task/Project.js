@@ -17,7 +17,7 @@ class Project extends React.Component {
         return (
             <div className={pId} >
                 <div className="task_project_name">{this.props.data.name}</div>
-                <span className="task_project_color" style={{color: pColor}}/>
+                <div className="task_project_color" style={{color: pColor}}>&nbsp;</div>
             </div>
         );
     }

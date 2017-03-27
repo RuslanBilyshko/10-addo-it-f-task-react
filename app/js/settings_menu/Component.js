@@ -36,8 +36,8 @@ class SettingsMenu extends React.Component {
         return (
             <div className="settings_menu">
                 {/*{this.state.component}*/}
-                <button className="task-button-edit">&nbsp;</button>
-                <button className="task-button-remove">&nbsp;</button>
+                <button className="task-button-edit btn btn-default"/>
+                <button className="task-button-remove btn btn-default"/>
                 {/*<button className="task-button-get-menu">&nbsp;</button>*/}
             </div>
         );

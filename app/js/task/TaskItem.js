@@ -48,7 +48,6 @@ class TaskItem extends React.Component {
                 <div className="task_title_wrapper">
                     <Priority priority={this.state.data.priority}/>
                     <div className="task_title">{this.state.data.title}</div>
-
                 </div>
                 <div className="task_settings" onClick={() => {
                     this.changeState(<SettingsMenu/>);

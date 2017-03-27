@@ -19,7 +19,7 @@ class TaskList extends React.Component {
 
     addButton() {
         return (
-            <button onClick={() => {
+            <button className="btn btn-success" onClick={() => {
                 this.changeState(<TaskForm/>)
             }}>+ Добавить задачу</button>
         );
@@ -27,7 +27,7 @@ class TaskList extends React.Component {
 
     canselButton() {
         return (
-            <a href="#" onClick={() => {
+            <a className="btn" href="#" onClick={() => {
                 this.changeState(<TaskForm/>)
             }}>Отмена</a>
         );
@@ -63,10 +63,10 @@ class TaskList extends React.Component {
         return (
             <div className="task-list-container">
                 {tList}
-                {this.state.form}
-                <div className="col-md-12">{this.state.button}</div>
-
-
+                <div className="add-form-container">
+                    {this.state.form}
+                    {this.state.button}
+                </div>
             </div>
         );
     }
