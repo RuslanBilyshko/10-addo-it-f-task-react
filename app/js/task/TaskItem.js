@@ -1,7 +1,8 @@
 import React from 'react';
 import Priority from './Priority';
 import Project from './Project';
-import SettingsMenu from './SettingsMenu';
+import SettingsMenu from '../settings_menu/Component';
+
 
 class TaskItem extends React.Component {
 
@@ -9,8 +10,33 @@ class TaskItem extends React.Component {
         super(props);
 
         this.state = {
-            data: props.data
+            data: props.data,
+            menu: null,
+            toggleClass: "close",
+            isOpen: false
+        };
+
+        this.changeState = this.changeState.bind(this);
+
+    }
+
+    changeState(data) {
+
+        //this.state.toggleClass = this.state.toggleClass == "close" ? "open" : "close";
+
+        if (!this.state.isOpen) {
+            this.setState({
+                menu: data,
+                isOpen: true
+            });
+        } else {
+            this.setState({
+                menu: null,
+                isOpen: false
+            });
         }
+
+
     }
 
     render() {
@@ -19,10 +45,21 @@ class TaskItem extends React.Component {
 
         return (
             <div id={tId} className="task col-md-12">
-                <Priority priority={this.state.data.priority}/>
-                <div className="task_title">{this.state.data.title}</div>
-                <SettingsMenu/>
+                <div className="task_title_wrapper">
+                    <Priority priority={this.state.data.priority}/>
+                    <div className="task_title">{this.state.data.title}</div>
+
+                </div>
+                <div className="task_settings" onClick={() => {
+                    this.changeState(<SettingsMenu/>);
+                }}>
+                    &nbsp;
+                </div>
+                {this.state.menu}
+
+
                 <Project data={this.state.data.project}/>
+
 
                 {/*{console.log("Data - ", this.state.data)}*/}
             </div>

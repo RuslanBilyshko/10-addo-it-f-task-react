@@ -13,7 +13,7 @@ class Priority extends React.Component {
 
     render() {
         let priority = "clearfix task_priority priority-" + this.state.priority;
-        return (<div className={priority} >&nbsp;{<FontAwesome name='square' />}</div>);
+        return (<div className={priority} >{<FontAwesome name='square' />}</div>);
     }
 
 }

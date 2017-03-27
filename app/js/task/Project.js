@@ -11,11 +11,11 @@ class Project extends React.Component {
     }
 
     render() {
-        let pId = "task_project-" + this.props.data.id;
+        let pId = "task_project task_project-" + this.props.data.id;
         let pColor = this.props.data.color;
 
         return (
-            <div id={pId} className="task_project" >
+            <div className={pId} >
                 <div className="task_project_name">{this.props.data.name}</div>
                 <span className="task_project_color" style={{color: pColor}}/>
             </div>

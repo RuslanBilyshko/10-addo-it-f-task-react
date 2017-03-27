@@ -1,19 +1,12 @@
-$prority0: yellow;
-$prority1: Orange;
-$prority2: red;
+$priority1: yellow;
+$priority2: Orange;
+$priority3: red;
+$mainBgColor: #fff;
 
-//.prority0 {
-//  color: $prority0;
-//  background-color: $prority0;
-//}
-//.prority1 {
-//  color: $prority1;
-//  background-color: $prority1;
-//}
-//.prority2 {
-//  color: $prority2;
-//  background-color: $prority2;
-//}
+@mixin priority-color($color) {
+  color: $color;
+  background-color: $color;
+}
 
 body {
   font-size: 14px;
@@ -39,40 +32,51 @@ body {
 }
 
 .main-content {
-  background-color: #fff;
+  background-color: $mainBgColor;
   padding: 25px;
 }
 
 .priority-0 span.fa {
-  color: $prority0;
-  background-color: $prority0;
-
+  @include priority-color($priority1);
 }
 
 .priority-1 span.fa {
-  color: $prority1;
-  background-color: $prority1;
-
+  @include priority-color($priority2);
 }
 
 .priority-2 span.fa {
-  color: $prority2;
-  background-color: $prority2;
-
+  @include priority-color($priority3);
 }
 
 .task-list-container {
 
   .task {
-
+    position: relative;
     border-bottom: #c5c5c5 solid 1px;
-    padding: 5px;
+    padding: 10px 35px 10px 0;
+
+    &:hover {
+      .task_settings {
+
+        &:before {
+          color: #3c3c3c;
+        }
+
+      }
+    }
 
     & > div {
       float: left;
+      display: flex;
+      align-items: center;
     }
 
     .task_priority {
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin-right: 10px;
 
       span.fa {
         width: 15px;
@@ -90,13 +94,63 @@ body {
     }
 
     .task_settings {
+      cursor: pointer;
+      width: 25px;
+      text-align: center;
 
-      float: right;
+      &:before {
+        content: "\f142";
+        font-family: FontAwesome;
+        color: $mainBgColor;
+        width: 100%;
 
+      }
+
+      position: absolute;
+      right: 0;
+      background: $mainBgColor;
+      z-index: 99;
+
+    }
+
+    .settings_menu {
+      position: absolute;
+      right: 30px;
+      background: #fff;
+      padding: 0 10px;
     }
 
   }
 
+}
+
+.settings_menu {
+  button {
+    color: #1b6d85;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:before {
+      font-family: FontAwesome;
+    }
+  }
+
+  button.task-button-edit {
+
+    &:before {
+      content: "\f044";
+    }
+
+  }
+
+  button.task-button-remove {
+
+    &:before {
+      content: "\f1f8";
+    }
+
+  }
 }
 
 .project-container {
