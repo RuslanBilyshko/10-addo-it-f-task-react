@@ -588,11 +588,17 @@ var TaskForm = function (_React$Component) {
         }
     }, {
         key: 'handleSubmit',
-        value: function handleSubmit(event) {
+        value: function handleSubmit() {
             var url = 'urlToSendDataTo';
             //myRequestLib.post(url, this.formData);
-            console.log(this.formData);
-            event.preventDefault();
+            console.log(this.mixins);
+        }
+    }, {
+        key: 'updateFormData',
+        value: function updateFormData(data) {
+            this.setState({
+                mixins: data
+            });
         }
     }, {
         key: 'componentDidUpdate',
@@ -615,8 +621,9 @@ var TaskForm = function (_React$Component) {
                         onChange: function onChange() {
                             _this2.updateFormData;
                         },
-                        onSubmit: function onSubmit() {
-                            _this2.handleSubmit;
+                        onSubmit: function onSubmit(event) {
+                            _this2.handleSubmit();
+                            event.preventDefault();
                         },
                         role: 'form',
                         className: 'form-inline',

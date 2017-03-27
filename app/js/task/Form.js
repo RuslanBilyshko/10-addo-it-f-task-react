@@ -25,13 +25,21 @@ class TaskForm extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit() {
      let url = 'urlToSendDataTo';
      //myRequestLib.post(url, this.formData);
-        console.log(this.formData);
-        event.preventDefault();
+        console.log(this.mixins);
 
   }
+
+  updateFormData(data) {
+        this.setState({
+           mixins : data
+        });
+
+  }
+
+
 
     componentDidUpdate() {
         // Access ISO String and formatted values from the DOM.
@@ -48,8 +56,10 @@ class TaskForm extends React.Component {
                       onChange={()=> {
                           this.updateFormData
                       }}
-                      onSubmit={()=>{
-                          this.handleSubmit
+                      onSubmit={(event)=>{
+                          this.handleSubmit();
+                           event.preventDefault();
+
 
                       }}
                       role="form"
