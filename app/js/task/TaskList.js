@@ -1,6 +1,9 @@
 import React from 'react';
+import Form from '../form/Component';
 import TaskItem from './TaskItem';
-import TaskForm from './Form';
+
+
+
 
 class TaskList extends React.Component {
 
@@ -8,51 +11,49 @@ class TaskList extends React.Component {
         super(props);
 
         this.state = {
-            data: this.props.data,
-            isForm: false,
-            button: this.addButton(),
-            form: null
+            data: props.data,
+            isForm: false
         };
 
-        this.changeState = this.changeState.bind(this);
+        //this.changeState = this.changeState.bind(this);
     }
 
-    addButton() {
-        return (
-            <button className="btn btn-success" onClick={() => {
-                this.changeState(<TaskForm/>)
-            }}>+ Добавить задачу</button>
-        );
-    }
-
-    canselButton() {
-        return (
-            <a className="btn" href="#" onClick={() => {
-                this.changeState(<TaskForm/>)
-            }}>Отмена</a>
-        );
-    }
-
-    changeState(data) {
-
-        //this.state.toggleClass = this.state.toggleClass == "close" ? "open" : "close";
-
-        if (!this.state.isForm) {
-            this.setState({
-                form: data,
-                button: this.canselButton(),
-                isForm: true
-            });
-        } else {
-            this.setState({
-                form: null,
-                button: this.addButton(),
-                isForm: false
-            });
-        }
-
-
-    }
+    // addButton() {
+    //     return (
+    //         <button className="btn btn-success" onClick={() => {
+    //             this.changeState(<Form />)
+    //         }}>+ Добавить задачу</button>
+    //     );
+    // }
+    //
+    // canselButton() {
+    //     return (
+    //         <a className="btn" href="#" onClick={() => {
+    //             this.changeState(<Form />)
+    //         }}>Отмена</a>
+    //     );
+    // }
+    //
+    // changeState(data) {
+    //
+    //     //this.state.toggleClass = this.state.toggleClass == "close" ? "open" : "close";
+    //
+    //     if (!this.state.isForm) {
+    //         this.setState({
+    //             form: data,
+    //             button: this.canselButton(),
+    //             isForm: true
+    //         });
+    //     } else {
+    //         this.setState({
+    //             form: null,
+    //             button: this.addButton(),
+    //             isForm: false
+    //         });
+    //     }
+    //
+    //
+    // }
 
     render() {
 
@@ -64,8 +65,9 @@ class TaskList extends React.Component {
             <div className="task-list-container">
                 {tList}
                 <div className="add-form-container">
-                    {this.state.form}
-                    {this.state.button}
+                    {/*{this.state.form}*/}
+                    {/*{this.state.button}*/}
+                    <Form />
                 </div>
             </div>
         );
