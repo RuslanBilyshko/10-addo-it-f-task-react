@@ -1,14 +1,13 @@
 import React from 'react';
 import Label from './Label';
 
-class InputText extends React.Component {
+class InputBase extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             label: props.label,
-            labelOnly: props.labelOnly,
             type: props.type,
             name: props.name,
             placeholder: props.placeholder,
@@ -20,31 +19,36 @@ class InputText extends React.Component {
 
     render() {
 
-        let placeholder = this.state.placeholder;
-            placeholder = placeholder == "" ? "Please enter data from " + this.state.name : placeholder;
+        let labelClass = "";
+
+        if (this.state.label == "") {
+            this.state.label = this.state.name;
+            labelClass = "sr-only";
+        }
 
         return (
             <div className={this.state.wrapperClass}>
-                <Label htmlFor={this.state.name} only={this.state.labelOnly} />
+                <label className={labelClass} htmlFor={this.state.name}>{this.state.label}</label>
                 <input type={this.state.type}
                        name={this.state.name}
                        id={this.state.name}
                        className={this.state.className}
-                       placeholder={placeholder}
+                       placeholder={this.state.placeholder}
                        value={this.state.value}/>
             </div>
         )
     }
 }
 
-InputText.defaultProps = {
+InputBase.defaultProps = {
     label: "",
-    labelOnly: false,
     type: "text",
-    placeholder: "",
+    name: "text",
+    placeholder: "Please enter text",
     value: "",
     className: "form-control",
     wrapperClass: "form-group"
 };
 
-export default InputText;
+export default InputBase;
+

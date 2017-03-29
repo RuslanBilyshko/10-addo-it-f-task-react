@@ -17,7 +17,7 @@ class Form extends React.Component {
     render() {
         return (
             <form className="form-inline" action={this.state.action} method={this.state.method}>
-                <InputText/>
+                <InputText name="title" placeholder="Title task..." labelOnly={true} />
                 <Button/>
 
             </form>
