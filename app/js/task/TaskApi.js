@@ -1,10 +1,12 @@
+"use strict";
+
 import React, {Component} from 'react';
-import task_data from './task_data';
+import tasks from '../data/tasks';
 
 class TaskApi extends Component
 {
     getAll() {
-        return task_data;
+        return tasks;
     }
 }
 

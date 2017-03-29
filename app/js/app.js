@@ -1,4 +1,5 @@
-//import 'bootstrap/dist/css/bootstrap.css';
+"use strict";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';

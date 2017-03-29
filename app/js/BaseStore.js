@@ -1,3 +1,5 @@
+"use strict";
+
 import AppDispatcher from './appDispatcher';
 import EventEmiter from "events";
 

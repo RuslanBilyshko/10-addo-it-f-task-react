@@ -1,4 +1,4 @@
-let task_data = [
+let tasks = [
     {
         "date": "2017-03-27",
         "id": 1,
@@ -105,4 +105,4 @@ let task_data = [
     },
 ];
 
-export default task_data;
+export default tasks;

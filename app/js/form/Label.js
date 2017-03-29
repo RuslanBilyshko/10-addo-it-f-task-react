@@ -1,3 +1,5 @@
+"use strict";
+
 import React from 'react';
 
 class Label extends React.Component {

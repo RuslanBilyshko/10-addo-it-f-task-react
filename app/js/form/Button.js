@@ -1,3 +1,5 @@
+"use strict";
+
 import React from 'react';
 
 class Button extends React.Component {
@@ -8,13 +10,14 @@ class Button extends React.Component {
         this.state = {
             type: props.type,
             name: props.name,
-            value: props.value
+            value: props.value,
+            className: props.className
         };
     }
 
     render() {
 
-        let name = "btn btn-" + this.state.name;
+        let name = "btn btn-" + this.state.name + " " + this.state.className;
         return (
             <button name={this.state.type}
                     className={name}
@@ -30,7 +33,8 @@ class Button extends React.Component {
 Button.defaultProps = {
     type: "submit",
     name: "success",
-    value: "Submit"
+    value: "Submit",
+    className: ""
 };
 
 export default Button;
