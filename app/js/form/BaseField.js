@@ -10,6 +10,7 @@ class InputBase extends React.Component {
 
         this.state = {
             label: props.label,
+            labelOnly: props.labelOnly,
             type: props.type,
             name: props.name,
             placeholder: props.placeholder,
