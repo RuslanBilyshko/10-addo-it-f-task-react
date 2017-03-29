@@ -2,23 +2,10 @@
 
 import React from 'react';
 import Label from './Label';
+import BaseField from './BaseField';
+//import FieldDecorator from './FieldDecorator';
 
-class InputText extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            label: props.label,
-            labelOnly: props.labelOnly,
-            type: props.type,
-            name: props.name,
-            placeholder: props.placeholder,
-            value: props.value,
-            className: props.className,
-            wrapperClass: props.wrapperClass
-        };
-    }
+class InputText extends BaseField {
 
     render() {
 
@@ -38,15 +25,5 @@ class InputText extends React.Component {
         )
     }
 }
-
-InputText.defaultProps = {
-    label: "",
-    labelOnly: false,
-    type: "text",
-    placeholder: "",
-    value: "",
-    className: "form-control",
-    wrapperClass: "form-group"
-};
 
 export default InputText;

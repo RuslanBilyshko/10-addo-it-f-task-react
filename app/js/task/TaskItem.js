@@ -37,8 +37,6 @@ class TaskItem extends React.Component {
                 isOpen: false
             });
         }
-
-
     }
 
     render() {

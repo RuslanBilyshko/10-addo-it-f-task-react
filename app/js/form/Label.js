@@ -10,8 +10,8 @@ class Label extends React.Component {
 
         this.state = {
             htmlFor: props.htmlFor,
-            title: props.title,
-            only: props.only
+            title: props.title || "",
+            only: props.only || false
         };
     }
 
@@ -26,7 +26,7 @@ class Label extends React.Component {
 
         if (title == "") {
             title = this.state.htmlFor;
-            title = title[0].toUpperCase() + title.slice(1);
+            //title = title[0].toUpperCase() + title.slice(1);
         }
 
 
