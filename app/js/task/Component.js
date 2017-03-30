@@ -4,7 +4,7 @@ import React from 'react';
 import TaskList from './TaskList';
 import TaskStore from './Store';
 import Form from '../form/Component';
-import CONSTANTS from './../form/Constants';
+import FORM_CONST from './../form/Constants';
 import taskFormSchema from './TaskFormSchema';
 
 class TaskListContainer extends React.Component {
@@ -27,15 +27,12 @@ class TaskListContainer extends React.Component {
     }
 
     componentDidMount() {
-        TaskStore.addEventListener(CONSTANTS.ADD, this.updateList);
+        TaskStore.addEventListener(FORM_CONST.ADD, this.updateList);
     }
 
     componentWillUnmount() {
-        TaskStore.removeEventListener(CONSTANTS.ADD, this.updateList);
+        TaskStore.removeEventListener(FORM_CONST.ADD, this.updateList);
     }
-
-
-
 
     render() {
 
@@ -43,7 +40,7 @@ class TaskListContainer extends React.Component {
             <div>
                 <TaskList data={this.state.data}/>
                 <div className="add-form-container">
-                    <Form eventName={CONSTANTS.ADD} schema={taskFormSchema} className="form-inline"/>
+                    <Form eventName={FORM_CONST.ADD} schema={taskFormSchema} className="form-inline"/>
                 </div>
             </div>
 

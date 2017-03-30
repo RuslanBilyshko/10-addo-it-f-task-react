@@ -2,7 +2,7 @@
 
 import AppDispatcher from './../appDispatcher';
 import BaseStore from "./../BaseStore";
-import CONSTANTS from "./../form/Constants";
+import FORM_CONST from "./../form/Constants";
 import tasks from './../data/tasks';
 
 class TaskStore extends BaseStore {
@@ -26,7 +26,7 @@ let instanseTaskStore = new TaskStore();
 
 instanseTaskStore.dispatchTocken = AppDispatcher.register((action) => {
     switch (action.eventName) {
-        case CONSTANTS.ADD:
+        case FORM_CONST.ADD:
             instanseTaskStore.push(action.data);
             instanseTaskStore.emit(action.eventName, action.data);
             return false;

@@ -1,7 +1,6 @@
 'use strict';
 
 import AppDispatcher from '../appDispatcher';
-import CONSTANTS from './Constants';
 
 class FormActions {
 

@@ -328,10 +328,6 @@ var _appDispatcher = require('../appDispatcher');
 
 var _appDispatcher2 = _interopRequireDefault(_appDispatcher);
 
-var _Constants = require('./Constants');
-
-var _Constants2 = _interopRequireDefault(_Constants);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -357,7 +353,7 @@ var FormActions = function () {
 
 exports.default = new FormActions();
 
-},{"../appDispatcher":3,"./Constants":11}],8:[function(require,module,exports){
+},{"../appDispatcher":3}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
