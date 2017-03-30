@@ -28,7 +28,12 @@ class Select extends BaseField {
         });
 
         return (
-            <select value={this.state.value} className={this.state.className} name={this.state.name}>
+            <select
+                onChange={this.handleChange.bind(this)}
+                onBlur={this.handleBlur.bind(this)}
+                value={this.state.value}
+                className={this.state.className}
+                name={this.state.name}>
                 <option value="none">{this.state.placeholder}</option>
                 {optionsHtml}
             </select>

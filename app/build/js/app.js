@@ -346,6 +346,15 @@ var FormActions = function () {
 
             });
         }
+    }, {
+        key: 'onChange',
+        value: function onChange(eventName, data) {
+            _appDispatcher2.default.dispatch({
+                eventName: eventName,
+                data: data
+
+            });
+        }
     }]);
 
     return FormActions;
@@ -359,6 +368,8 @@ exports.default = new FormActions();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -389,8 +400,23 @@ var BaseField = function (_React$Component) {
             value: props.data.value,
             className: props.data.className || "form-control"
         };
+
         return _this;
     }
+
+    _createClass(BaseField, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            console.log("change", e.target.value);
+            console.log("change", e.target.getAttribute('name'));
+        }
+    }, {
+        key: 'handleBlur',
+        value: function handleBlur(e) {
+            console.log("change", e.target.value);
+            console.log("change", e.target.getAttribute('name'));
+        }
+    }]);
 
     return BaseField;
 }(_react2.default.Component);
@@ -577,7 +603,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    ADD: 'form-add-event'
+    ADD: 'form-onSubmit',
+    CHANGE_FIELD: 'form-field-onChange'
 };
 
 },{}],12:[function(require,module,exports){
@@ -708,7 +735,11 @@ var InputText = function (_BaseField) {
                 id: this.state.name,
                 className: this.state.className,
                 placeholder: this.state.placeholder,
-                value: this.state.value });
+                value: this.state.value,
+                onChange: this.handleChange.bind(this),
+                onBlur: this.handleBlur.bind(this)
+
+            });
         }
     }]);
 
@@ -901,7 +932,12 @@ var Select = function (_BaseField) {
 
             return _react2.default.createElement(
                 'select',
-                { value: this.state.value, className: this.state.className, name: this.state.name },
+                {
+                    onChange: this.handleChange.bind(this),
+                    onBlur: this.handleBlur.bind(this),
+                    value: this.state.value,
+                    className: this.state.className,
+                    name: this.state.name },
                 _react2.default.createElement(
                     'option',
                     { value: 'none' },

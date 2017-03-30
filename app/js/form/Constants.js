@@ -1,3 +1,4 @@
 export default {
-    ADD: 'form-add-event'
+    ADD: 'form-onSubmit',
+    CHANGE_FIELD: 'form-field-onChange'
 }

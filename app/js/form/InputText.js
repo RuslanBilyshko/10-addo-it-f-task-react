@@ -13,7 +13,11 @@ class InputText extends BaseField {
                    id={this.state.name}
                    className={this.state.className}
                    placeholder={this.state.placeholder}
-                   value={this.state.value}/>
+                   value={this.state.value}
+                   onChange={this.handleChange.bind(this)}
+                   onBlur={this.handleBlur.bind(this)}
+
+            />
         )
     }
 }

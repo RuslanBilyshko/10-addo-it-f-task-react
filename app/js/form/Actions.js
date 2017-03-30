@@ -11,6 +11,14 @@ class FormActions {
 
         });
     }
+
+    onChange(eventName, data) {
+        AppDispatcher.dispatch({
+            eventName: eventName,
+            data: data
+
+        });
+    }
 }
 
 export default new FormActions();

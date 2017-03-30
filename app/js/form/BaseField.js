@@ -16,7 +16,21 @@ class BaseField extends React.Component {
             value: props.data.value,
             className: props.data.className || "form-control"
         };
+
+
     }
+
+    handleChange(e) {
+        console.log("change", e.target.value);
+        console.log("change", e.target.getAttribute('name'));
+    }
+
+        handleBlur(e) {
+        console.log("change", e.target.value);
+        console.log("change", e.target.getAttribute('name'));
+    }
+
+
 }
 
 export default BaseField;
