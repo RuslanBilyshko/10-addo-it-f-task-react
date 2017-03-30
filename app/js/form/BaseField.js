@@ -1,7 +1,6 @@
 "use strict";
 
 import React from 'react';
-import Label from './Label';
 
 class BaseField extends React.Component {
 
@@ -15,8 +14,7 @@ class BaseField extends React.Component {
             name: props.data.name,
             placeholder: props.data.placeholder,
             value: props.data.value,
-            className: props.data.className || "form-control",
-            wrapperClass: props.data.wrapperClass || "form-group"
+            className: props.data.className || "form-control"
         };
     }
 }

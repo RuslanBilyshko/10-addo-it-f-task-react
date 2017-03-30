@@ -1,17 +1,19 @@
 "use strict";
 
 import React from 'react';
+import BaseField from './BaseField';
 
-class Button extends React.Component {
+
+class Button extends BaseField {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            type: props.type,
-            name: props.name,
-            value: props.value,
-            className: props.className
+            type: props.data.type || "submit",
+            name: props.data.name || "success",
+            value: props.data.value || "Submit",
+            className: props.data.className || ""
         };
     }
 
@@ -26,15 +28,6 @@ class Button extends React.Component {
             </button>
         )
     }
-
-
 }
-
-Button.defaultProps = {
-    type: "submit",
-    name: "success",
-    value: "Submit",
-    className: ""
-};
 
 export default Button;

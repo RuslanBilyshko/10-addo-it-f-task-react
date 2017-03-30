@@ -2,26 +2,9 @@
 
 import React from 'react';
 import Button from './Button';
-import InputText from './InputText';
+import Link from './Link';
+import FormGroup from './FormGroup';
 
-
-let fieldsData = [
-    {
-        labelOnly: true,
-        type: "text",
-        name: "title",
-    },
-    {
-        labelOnly: true,
-        type: "text",
-        name: "title",
-    },
-    {
-        labelOnly: true,
-        type: "text",
-        name: "title",
-    }
-];
 
 class Form extends React.Component {
 
@@ -31,21 +14,27 @@ class Form extends React.Component {
         this.state = {
             action: props.action,
             method: props.method,
-            className: props.className
+            className: props.className,
+            schema: props.schema
         };
     }
 
     render() {
 
-        let fieds = fieldsData.map((data, index)=> {
-            return <InputText key={index} data={data}/>
+        let fieldsHtml = this.state.schema.map((data, index) => {
+
+            if (data.type == 'submit')
+                return <Button key={index} data={data}/>;
+
+            if (data.type == 'link')
+                return <Link key={index} data={data}/>;
+
+            return <FormGroup key={index} field={data}/>;
         });
 
         return (
             <form className={this.state.className} action={this.state.action} method={this.state.method}>
-                {/*<InputText data={fieldsData[0]}/>*/}
-                {fieds}
-                <Button/>
+                {fieldsHtml}
             </form>
         );
     }
@@ -55,7 +44,8 @@ class Form extends React.Component {
 Form.defaultProps = {
     action: "/",
     method: "POST",
-    className: "form"
+    className: "form",
+    schema: []
 };
 
 export default Form;

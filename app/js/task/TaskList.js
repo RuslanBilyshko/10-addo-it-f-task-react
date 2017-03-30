@@ -3,14 +3,7 @@
 import React from 'react';
 import Form from '../form/Component';
 import TaskItem from './TaskItem';
-
-let fieldsData = [
-    {
-        labelOnly: true,
-        type: "text",
-        name: "title"
-    }
-];
+import taskFormSchema from './TaskFormSchema';
 
 class TaskList extends React.Component {
 
@@ -35,7 +28,7 @@ class TaskList extends React.Component {
             <div className="task-list-container">
                 {tList}
                 <div className="add-form-container">
-                    <Form fields={fieldsData} className="form-inline" />
+                    <Form schema={taskFormSchema} className="form-inline" />
                 </div>
             </div>
         );
