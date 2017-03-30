@@ -260,7 +260,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -281,7 +281,7 @@ var BaseField = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (BaseField.__proto__ || Object.getPrototypeOf(BaseField)).call(this, props));
 
         _this.state = {
-            label: props.data.label,
+            label: props.data.label || '',
             labelOnly: props.data.labelOnly,
             type: props.data.type,
             name: props.data.name,
@@ -306,13 +306,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
-
-var _BaseField2 = require('./BaseField');
-
-var _BaseField3 = _interopRequireDefault(_BaseField2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -322,8 +318,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Button = function (_BaseField) {
-    _inherits(Button, _BaseField);
+//import BaseField from './BaseField';
+
+
+var Button = function (_React$Component) {
+    _inherits(Button, _React$Component);
 
     function Button(props) {
         _classCallCheck(this, Button);
@@ -333,19 +332,19 @@ var Button = function (_BaseField) {
         _this.state = {
             type: props.data.type || "submit",
             name: props.data.name || "success",
-            value: props.data.value || "Submit",
+            value: props.data.value,
             className: props.data.className || ""
         };
         return _this;
     }
 
     _createClass(Button, [{
-        key: 'render',
+        key: "render",
         value: function render() {
 
             var name = "btn btn-" + this.state.name + " " + this.state.className;
             return _react2.default.createElement(
-                'button',
+                "button",
                 { name: this.state.type,
                     className: name,
                     type: this.state.type },
@@ -355,11 +354,11 @@ var Button = function (_BaseField) {
     }]);
 
     return Button;
-}(_BaseField3.default);
+}(_react2.default.Component);
 
 exports.default = Button;
 
-},{"./BaseField":5,"react":382}],7:[function(require,module,exports){
+},{"react":382}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -424,7 +423,10 @@ var Form = function (_React$Component) {
 
             return _react2.default.createElement(
                 'form',
-                { className: this.state.className, action: this.state.action, method: this.state.method },
+                { onSubmit: function onSubmit(e) {
+                        e.preventDefault();
+                        console.log();
+                    }, className: this.state.className, action: this.state.action, method: this.state.method },
                 fieldsHtml
             );
         }
@@ -1004,11 +1006,25 @@ var SettingsMenu = function (_React$Component) {
         key: 'render',
         value: function render() {
 
+            var editButton = {
+                type: "button",
+                className: "task-button-edit",
+                name: "info",
+                value: ""
+            };
+
+            var removeButton = {
+                type: "button",
+                className: "task-button-remove",
+                name: "danger",
+                value: ""
+            };
+
             return _react2.default.createElement(
                 'div',
                 { className: 'settings_menu' },
-                _react2.default.createElement(_Button2.default, { className: 'task-button-edit', name: 'info', value: '' }),
-                _react2.default.createElement(_Button2.default, { className: 'task-button-remove', name: 'danger', value: '' })
+                _react2.default.createElement(_Button2.default, { data: editButton }),
+                _react2.default.createElement(_Button2.default, { data: removeButton })
             );
         }
     }]);

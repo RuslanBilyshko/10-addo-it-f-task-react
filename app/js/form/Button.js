@@ -1,10 +1,10 @@
 "use strict";
 
 import React from 'react';
-import BaseField from './BaseField';
+//import BaseField from './BaseField';
 
 
-class Button extends BaseField {
+class Button extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ class Button extends BaseField {
         this.state = {
             type: props.data.type || "submit",
             name: props.data.name || "success",
-            value: props.data.value || "Submit",
+            value: props.data.value,
             className: props.data.className || ""
         };
     }

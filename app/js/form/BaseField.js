@@ -8,7 +8,7 @@ class BaseField extends React.Component {
         super(props);
 
         this.state = {
-            label: props.data.label,
+            label: props.data.label || '',
             labelOnly: props.data.labelOnly,
             type: props.data.type,
             name: props.data.name,

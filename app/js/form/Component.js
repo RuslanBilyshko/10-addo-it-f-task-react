@@ -33,7 +33,12 @@ class Form extends React.Component {
         });
 
         return (
-            <form className={this.state.className} action={this.state.action} method={this.state.method}>
+            <form onSubmit={(e)=> {
+                e.preventDefault();
+                console.log();
+
+
+            }} className={this.state.className} action={this.state.action} method={this.state.method}>
                 {fieldsHtml}
             </form>
         );
