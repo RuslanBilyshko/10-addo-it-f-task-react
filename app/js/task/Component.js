@@ -2,7 +2,10 @@
 
 import React from 'react';
 import TaskList from './TaskList';
-import TaskApi from './TaskApi';
+import TaskStore from './Store';
+import Form from '../form/Component';
+import CONSTANTS from './../form/Constants';
+import taskFormSchema from './TaskFormSchema';
 
 class TaskListContainer extends React.Component {
 
@@ -10,15 +13,40 @@ class TaskListContainer extends React.Component {
         super(props);
 
         this.state = {
-            data: TaskApi.getAll()
-        }
+            data: TaskStore.getAll()
+        };
+
+        this.updateList = this.updateList.bind(this);
     }
+
+    updateList(data) {
+        this.setState({
+            data: TaskStore.getAll()
+        });
+        console.log(data);
+    }
+
+    componentDidMount() {
+        TaskStore.addEventListener(CONSTANTS.ADD, this.updateList);
+    }
+
+    componentWillUnmount() {
+        TaskStore.removeEventListener(CONSTANTS.ADD, this.updateList);
+    }
+
+
 
 
     render() {
 
         return (
-            <TaskList data={this.state.data}/>
+            <div>
+                <TaskList data={this.state.data}/>
+                <div className="add-form-container">
+                    <Form eventName={CONSTANTS.ADD} schema={taskFormSchema} className="form-inline"/>
+                </div>
+            </div>
+
         );
     }
 

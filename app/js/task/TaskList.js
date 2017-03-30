@@ -1,9 +1,7 @@
 "use strict";
 
 import React from 'react';
-import Form from '../form/Component';
 import TaskItem from './TaskItem';
-import taskFormSchema from './TaskFormSchema';
 
 class TaskList extends React.Component {
 
@@ -27,9 +25,6 @@ class TaskList extends React.Component {
         return (
             <div className="task-list-container">
                 {tList}
-                <div className="add-form-container">
-                    <Form schema={taskFormSchema} className="form-inline" />
-                </div>
             </div>
         );
     }

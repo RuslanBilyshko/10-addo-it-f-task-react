@@ -4,6 +4,24 @@ import React from 'react';
 import Button from './Button';
 import Link from './Link';
 import FormGroup from './FormGroup';
+import FormActions from './Actions';
+import CONSTANTS from './Constants';
+
+let newTask = {
+    "date": "2017-03-27",
+    "id": 88,
+    "priority": 2,
+    "project": {
+        "color": "#f89c7e",
+        "id": 1,
+        "name": "project 1",
+        "user": {
+            "id": 1,
+            "username": "root"
+        }
+    },
+    "title": "New task"
+};
 
 
 class Form extends React.Component {
@@ -15,7 +33,8 @@ class Form extends React.Component {
             action: props.action,
             method: props.method,
             className: props.className,
-            schema: props.schema
+            schema: props.schema,
+            eventName: props.eventName || CONSTANTS.ADD
         };
     }
 
@@ -33,9 +52,9 @@ class Form extends React.Component {
         });
 
         return (
-            <form onSubmit={(e)=> {
+            <form onSubmit={(e) => {
                 e.preventDefault();
-                console.log();
+                FormActions.onSubmit(this.state.eventName, newTask);
 
 
             }} className={this.state.className} action={this.state.action} method={this.state.method}>
