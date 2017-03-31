@@ -16,22 +16,22 @@ class TaskListContainer extends React.Component {
             data: TaskStore.getAll()
         };
 
-        this.updateList = this.updateList.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    updateList(data) {
-        this.setState({
-            data: TaskStore.getAll()
-        });
+    handleSubmit(data) {
+        // this.setState({
+        //     data: TaskStore.getAll()
+        // });
         console.log(data);
     }
 
     componentDidMount() {
-        TaskStore.addEventListener(FORM_CONST.ADD, this.updateList);
+        TaskStore.addEventListener(FORM_CONST.ADD, this.handleSubmit);
     }
 
     componentWillUnmount() {
-        TaskStore.removeEventListener(FORM_CONST.ADD, this.updateList);
+        TaskStore.removeEventListener(FORM_CONST.ADD, this.handleSubmit);
     }
 
     render() {
@@ -40,7 +40,7 @@ class TaskListContainer extends React.Component {
             <div>
                 <TaskList data={this.state.data}/>
                 <div className="add-form-container">
-                    <Form eventName={FORM_CONST.ADD} schema={taskFormSchema} className="form-inline"/>
+                    <Form eventName={FORM_CONST.ADD} schema={taskFormSchema} className="form"/>
                 </div>
             </div>
 

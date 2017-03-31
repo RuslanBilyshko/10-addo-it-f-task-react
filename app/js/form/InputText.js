@@ -2,6 +2,8 @@
 
 import React from 'react';
 import BaseField from './BaseField';
+import FormActions from './Actions';
+import CONSTANTS from './Constants';
 
 class InputText extends BaseField {
 

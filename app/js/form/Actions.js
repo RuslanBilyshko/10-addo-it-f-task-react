@@ -12,13 +12,22 @@ class FormActions {
         });
     }
 
-    onChange(eventName, data) {
+    onChangeField(eventName, data) {
         AppDispatcher.dispatch({
             eventName: eventName,
             data: data
 
         });
     }
+
+    onBlurField(eventName, data) {
+        AppDispatcher.dispatch({
+            eventName: eventName,
+            data: data
+        });
+    }
+
+
 }
 
 export default new FormActions();

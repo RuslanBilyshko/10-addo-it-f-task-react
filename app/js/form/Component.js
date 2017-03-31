@@ -5,6 +5,7 @@ import Button from './Button';
 import Link from './Link';
 import FormGroup from './FormGroup';
 import FormActions from './Actions';
+import FormStore from './Store';
 import CONSTANTS from './Constants';
 
 let newTask = {
@@ -34,30 +35,61 @@ class Form extends React.Component {
             method: props.method,
             className: props.className,
             schema: props.schema,
-            eventName: props.eventName || CONSTANTS.ADD
+            eventName: props.eventName || CONSTANTS.ADD,
+            data: props.data || FormStore.all()
         };
+
+        this.changeData = this.changeData.bind(this);
+
+
     }
+
+    onSubmitHandle(e) {
+        e.preventDefault();
+        FormActions.onSubmit(this.state.eventName, this.state.data);
+    }
+
+    changeData() {
+
+        this.setState({
+            data: FormStore.all()
+        });
+
+        console.log(this.state.data);
+    }
+
+    componentDidMount() {
+
+        FormStore.addEventListener(CONSTANTS.BLUR_FIELD, this.changeData);
+    }
+
+    componentWillUnmount() {
+        FormStore.removeEventListener(CONSTANTS.BLUR_FIELD, this.changeData);
+    }
+
 
     render() {
 
-        let fieldsHtml = this.state.schema.map((data, index) => {
+        let fieldsHtml = this.state.schema.map((fSchema, index) => {
 
-            if (data.type == 'submit')
-                return <Button key={index} data={data}/>;
+            if (fSchema.type == 'submit')
+                return <Button key={index} data={fSchema}/>;
 
-            if (data.type == 'link')
-                return <Link key={index} data={data}/>;
+            if (fSchema.type == 'link')
+                return <Link key={index} data={fSchema}/>;
 
-            return <FormGroup key={index} field={data}/>;
+            if (this.state.data.hasOwnProperty(fSchema.name))
+                fSchema.value = this.state.data[fSchema.name];
+
+            return <FormGroup key={index} field={fSchema}/>;
         });
 
         return (
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                FormActions.onSubmit(this.state.eventName, newTask);
-
-
-            }} className={this.state.className} action={this.state.action} method={this.state.method}>
+            <form onSubmit={this.onSubmitHandle.bind(this)}
+                  className={this.state.className}
+                  action={this.state.action}
+                  method={this.state.method}
+            >
                 {fieldsHtml}
             </form>
         );
