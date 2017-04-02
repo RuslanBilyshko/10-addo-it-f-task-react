@@ -12,21 +12,12 @@ class FormActions {
         });
     }
 
-    onChangeField(eventName, data) {
-        AppDispatcher.dispatch({
-            eventName: eventName,
-            data: data
-
-        });
-    }
-
     onBlurField(eventName, data) {
         AppDispatcher.dispatch({
             eventName: eventName,
             data: data
         });
     }
-
 
 }
 

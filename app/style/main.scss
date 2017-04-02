@@ -2,6 +2,7 @@ $priority1: yellow;
 $priority2: Orange;
 $priority3: red;
 $mainBgColor: #fff;
+$borderColor: #c5c5c5;
 
 @mixin priority-color($color) {
   color: $color;
@@ -47,12 +48,19 @@ body {
 .priority-2 span.fa {
   @include priority-color($priority3);
 }
+.task-list-button {
+  margin: 15px 0;
+
+  a {
+    text-decoration: underline;
+  }
+}
 
 .task-list-container {
 
   .task {
     position: relative;
-    border-bottom: #c5c5c5 solid 1px;
+    border-bottom:$borderColor solid 1px;
     padding: 10px 35px 10px 0;
 
     &:hover {

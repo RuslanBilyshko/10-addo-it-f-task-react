@@ -1,42 +1,50 @@
 import priority from '../data/priority';
 import projects from '../data/projects';
+import CONST_FORM from './../form/Constants';
 
 let taskFormSchema = [
 
     {
         type: 'text',
         name: 'title',
-        labelOnly: true,
+        label: "Название",
+        //labelOnly: true,
         placeholder: "Title task..."
     },
     {
         type: 'date',
         name: 'date',
-        labelOnly: true,
+        label: "Дата",
+        //labelOnly: true,
         placeholder: "Date task..."
     },
     {
         type: 'select',
         name: 'priority',
-        labelOnly: true,
+        label: "Приоритет",
+        //labelOnly: true,
         placeholder: "Priority...",
         options: priority
     },
     {
         type: 'select',
         name: 'project',
-        labelOnly: true,
+        label: "Проект",
+        //labelOnly: true,
         placeholder: "Project...",
         options: projects
     },
     {
         type: 'submit',
-        value: 'Save'
+        value: 'Save',
+        id: "submit"
     },
-    {
-        type: 'link',
-        value: 'Cancel'
-    }
+    // {
+    //     type: 'link',
+    //     value: 'Cancel',
+    //     id: 'cancel',
+    //     eventName: CONST_FORM.CANCEL
+    // },
     // {
     //     type: 'text',
     //     name: 'color',

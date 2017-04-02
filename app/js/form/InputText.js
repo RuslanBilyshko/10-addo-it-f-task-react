@@ -2,8 +2,6 @@
 
 import React from 'react';
 import BaseField from './BaseField';
-import FormActions from './Actions';
-import CONSTANTS from './Constants';
 
 class InputText extends BaseField {
 
@@ -16,7 +14,6 @@ class InputText extends BaseField {
                    className={this.state.className}
                    placeholder={this.state.placeholder}
                    value={this.state.value}
-                   onChange={this.handleChange.bind(this)}
                    onBlur={this.handleBlur.bind(this)}
 
             />

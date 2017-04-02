@@ -40,7 +40,7 @@ class FormGroup extends React.Component {
 
         return (
             <div className={this.state.className}>
-                <Label htmlFor={this.state.field.name} only={this.state.labelOnly}/>
+                <Label htmlFor={this.state.field.name} only={this.state.labelOnly} title={this.state.label} />
                 {this.fieldInit()}
             </div>
         )

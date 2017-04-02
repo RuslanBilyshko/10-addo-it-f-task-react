@@ -8,22 +8,6 @@ import FormActions from './Actions';
 import FormStore from './Store';
 import CONSTANTS from './Constants';
 
-let newTask = {
-    "date": "2017-03-27",
-    "id": 88,
-    "priority": 2,
-    "project": {
-        "color": "#f89c7e",
-        "id": 1,
-        "name": "project 1",
-        "user": {
-            "id": 1,
-            "username": "root"
-        }
-    },
-    "title": "New task"
-};
-
 
 class Form extends React.Component {
 
@@ -40,8 +24,6 @@ class Form extends React.Component {
         };
 
         this.changeData = this.changeData.bind(this);
-
-
     }
 
     onSubmitHandle(e) {
@@ -51,15 +33,14 @@ class Form extends React.Component {
 
     changeData() {
 
-        this.setState({
-            data: FormStore.all()
-        });
+        // this.setState({
+        //     data: FormStore.all()
+        // });
 
         console.log(this.state.data);
     }
 
     componentDidMount() {
-
         FormStore.addEventListener(CONSTANTS.BLUR_FIELD, this.changeData);
     }
 
@@ -88,8 +69,8 @@ class Form extends React.Component {
             <form onSubmit={this.onSubmitHandle.bind(this)}
                   className={this.state.className}
                   action={this.state.action}
-                  method={this.state.method}
-            >
+                  method={this.state.method}>
+
                 {fieldsHtml}
             </form>
         );

@@ -1,40 +1,36 @@
 "use strict";
 
 import React from 'react';
+import projects from './../data/projects';
+import withCrud from '../hoc/withCrud';
 
 
-class ProjectContainer extends React.Component {
+const apiUrl = "http://localhost:5000/api/project";
 
-    constructor(props) {
-        super(props);
+function ProjectContainer({todos, onToggle, onRemove}) {
 
-        this.state = {
-            data: props.data
-        }
-    }
+    debugger;
 
 
-    render() {
+    return (
+        <div className="project-container">
+            <ul className="filter_list">
+                <li><a href="#">Сегодня</a></li>
+                <li><a href="#">Следующие 7 дней</a></li>
+            </ul>
+            <ul className="project_list">
+                {todos.map(todo =>
+                    <li key={todo.value}><a href="#">{todo.name}</a>
+                        <button className="btn btn-primary btn-xs" onClick={() => onRemove(todo.id)}>X
+                        </button>
+                    </li>
+                )}
+            </ul>
+        </div>
 
-        return (
-            <div className="project-container">
-                <ul className="filter_list">
-                    <li><a href="#">Сегодня</a></li>
-                    <li><a href="#">Следующие 7 дней</a></li>
-                </ul>
-                <ul className="project_list">
-                    <li><a href="#">Project name</a></li>
-                    <li><a href="#">Project name</a></li>
-                    <li><a href="#">Project name</a></li>
-                    <li><a href="#">Project name</a></li>
-                    <li><a href="#">Project name</a></li>
-                    <li><a href="#">Project name</a></li>
-                </ul>
-            </div>
+    );
 
-        );
-    }
 
 }
 
-export default ProjectContainer;
+export default withCrud(ProjectContainer, apiUrl);

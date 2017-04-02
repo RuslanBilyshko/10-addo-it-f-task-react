@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-//import BaseField from './BaseField';
+import FormActions from './Actions';
 
 
 class Button extends React.Component {
@@ -13,7 +13,9 @@ class Button extends React.Component {
             type: props.data.type || "submit",
             name: props.data.name || "success",
             value: props.data.value,
-            className: props.data.className || ""
+            className: props.data.className,
+            eventName: props.data.eventName,
+            id: props.data.id
         };
     }
 
@@ -21,7 +23,7 @@ class Button extends React.Component {
 
         let name = "btn btn-" + this.state.name + " " + this.state.className;
         return (
-            <button name={this.state.type}
+            <button id={this.state.id} name={this.state.id}
                     className={name}
                     type={this.state.type}>
                 {this.state.value}

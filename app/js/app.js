@@ -12,6 +12,29 @@ import cookie from 'react-cookie';
 import fetch from 'react-fetch'
 
 
+// axios.post('http://localhost:5000/login', {
+//     username: 'root',
+//     password: '123'
+// })
+//     .then(function (response) {
+//         console.log(response.data.access_token);
+//         cookie.save("token",response.data.access_token)
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
+
+//console.log(cookie.load("token"));
+
+// axios.get('http://localhost:5000/api/task')
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
+//
+
 class App extends React.Component {
 
     render() {

@@ -29,7 +29,6 @@ class Select extends BaseField {
 
         return (
             <select
-                onChange={this.handleChange.bind(this)}
                 onBlur={this.handleBlur.bind(this)}
                 value={this.state.value}
                 className={this.state.className}

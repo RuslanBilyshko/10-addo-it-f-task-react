@@ -15,7 +15,7 @@ class BaseField extends React.Component {
             type: props.data.type,
             name: props.data.name,
             placeholder: props.data.placeholder,
-            value: props.data.value || '',
+            value: props.data.value,
             className: props.data.className || "form-control",
             eventName: props.eventName || CONSTANTS.BLUR_FIELD,
         };
@@ -29,7 +29,6 @@ class BaseField extends React.Component {
     }
 
     handleBlur(e) {
-
         let data = {
             name: e.target.getAttribute('name'),
             value: e.target.value
@@ -42,7 +41,6 @@ class BaseField extends React.Component {
 
 
 }
-
 
 export default BaseField;
 
