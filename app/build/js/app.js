@@ -1194,6 +1194,13 @@ function withCrud(Component, apiUrl) {
                 this.get();
             }
         }, {
+            key: 'componentWillReceiveProps',
+            value: function componentWillReceiveProps(nextProps) {
+                this.setState({
+                    daa: nextProps.likeCount > this.props.likeCount
+                });
+            }
+        }, {
             key: 'get',
             value: function get() {
                 var _this2 = this;
@@ -1237,17 +1244,16 @@ function withCrud(Component, apiUrl) {
             }
         }, {
             key: 'remove',
-            value: function remove(id) {
+            value: function remove(id, data) {
                 var _this4 = this;
 
                 _axios2.default.delete(apiUrl + '/' + id).then(function (response) {
                     return response.data;
                 }).then(function () {
-                    var data = _this4.state.data.filter(function (item) {
+                    var result = data.filter(function (item) {
                         return item.id !== id;
                     });
-
-                    _this4.setState({ data: data });
+                    _this4.setState({ data: result });
                 });
             }
         }, {
@@ -1257,7 +1263,7 @@ function withCrud(Component, apiUrl) {
                     get: this.get,
                     create: this.create,
                     update: this.update,
-                    remove: this.remove
+                    remove: this.remove.bind(this)
                 }, this.props));
             }
         }]);
@@ -1296,12 +1302,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var apiUrl = "http://localhost:5000/api/project";
 
 function ProjectContainer(_ref) {
-    var todos = _ref.todos,
+    var data = _ref.data,
         onToggle = _ref.onToggle,
-        onRemove = _ref.onRemove;
+        remove = _ref.remove;
 
-
-    debugger;
 
     return _react2.default.createElement(
         'div',
@@ -1331,19 +1335,19 @@ function ProjectContainer(_ref) {
         _react2.default.createElement(
             'ul',
             { className: 'project_list' },
-            todos.map(function (todo) {
+            data.map(function (project) {
                 return _react2.default.createElement(
                     'li',
-                    { key: todo.value },
+                    { key: project.id },
                     _react2.default.createElement(
                         'a',
-                        { href: '#' },
-                        todo.name
+                        { href: "#/project/" + project.id },
+                        project.name
                     ),
                     _react2.default.createElement(
                         'button',
                         { className: 'btn btn-primary btn-xs', onClick: function onClick() {
-                                return onRemove(todo.id);
+                                return remove(project.id, data);
                             } },
                         'X'
                     )

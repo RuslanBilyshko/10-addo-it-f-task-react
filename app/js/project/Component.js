@@ -7,9 +7,7 @@ import withCrud from '../hoc/withCrud';
 
 const apiUrl = "http://localhost:5000/api/project";
 
-function ProjectContainer({todos, onToggle, onRemove}) {
-
-    debugger;
+function ProjectContainer({data, onToggle, remove}) {
 
 
     return (
@@ -19,9 +17,10 @@ function ProjectContainer({todos, onToggle, onRemove}) {
                 <li><a href="#">Следующие 7 дней</a></li>
             </ul>
             <ul className="project_list">
-                {todos.map(todo =>
-                    <li key={todo.value}><a href="#">{todo.name}</a>
-                        <button className="btn btn-primary btn-xs" onClick={() => onRemove(todo.id)}>X
+                {data.map(project =>
+
+                    <li key={project.id}><a href={"#/project/"+project.id} >{project.name}</a>
+                        <button className="btn btn-primary btn-xs" onClick={() => remove(project.id, data)}>X
                         </button>
                     </li>
                 )}

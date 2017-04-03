@@ -17,6 +17,12 @@ function withCrud(Component, apiUrl) {
             this.get();
         }
 
+        componentWillReceiveProps(nextProps) {
+            this.setState({
+                daa: nextProps.likeCount > this.props.likeCount
+            });
+        }
+
         get() {
             axios.get(apiUrl)
                 .then(response => response.data)
@@ -53,13 +59,13 @@ function withCrud(Component, apiUrl) {
         }
 
 
-        remove(id) {
+        remove(id, data) {
             axios.delete(`${apiUrl}/${id}`)
                 .then(response => response.data)
                 .then(() => {
-                    const data = this.state.data.filter(item => item.id !== id);
+                    let result = data.filter((item) =>{return item.id !== id});
+                    this.setState({data: result});
 
-                    this.setState({data});
                 });
         }
 
@@ -69,7 +75,7 @@ function withCrud(Component, apiUrl) {
                               get={this.get}
                               create={this.create}
                               update={this.update}
-                              remove={this.remove}
+                              remove={this.remove.bind(this)}
                               {...this.props} />
         }
     }
